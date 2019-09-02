@@ -2,6 +2,7 @@ import React from 'react';
 
 import TodoList from "./components/TodoComponents/TodoList";
 import TodoForm from "./components/TodoComponents/TodoForm";
+import TodoSearch from "./components/TodoComponents/TodoSearch";
 
 import './components/TodoComponents/Todo.css'
 
@@ -46,6 +47,11 @@ class App extends React.Component {
     })
   }
 
+  searchByName = (name) => {
+    const matches = this.state.tasks.filter(task => task.name.toLowerCase().match(name.toLowerCase()) !== null);
+    this.setState({ tasks: matches });
+  }
+
   runMemory = () => {
     if (localStorage.length !== 0) {
       this.setState({ tasks: JSON.parse(localStorage.getItem("tasks")) })
@@ -64,6 +70,7 @@ class App extends React.Component {
     return (
       <div className="container">
         <h2>Welcome to your Todo App!</h2>
+        <TodoSearch searchByName={this.searchByName} />
         <TodoList tasks={this.state.tasks} toggleComplete={this.toggleComplete} />
         <TodoForm addTask={this.addTask} clearCompleted={this.clearCompleted} />
       </div>
