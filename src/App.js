@@ -18,8 +18,8 @@ class App extends React.Component {
     }
   }
 
-  addTask = (task) => {
-    this.setState({ ...this.state.tasks, task });
+  addTask = (newTask) => {
+    this.setState({ tasks: [...this.state.tasks, newTask] });
   }
 
   render() {
@@ -27,7 +27,7 @@ class App extends React.Component {
       <div>
         <h2>Welcome to your Todo App!</h2>
         <TodoList tasks={this.state.tasks} />
-        <TodoForm addItem={this.addTask} />
+        <TodoForm addTask={this.addTask} />
       </div>
     );
   }
