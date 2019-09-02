@@ -47,8 +47,9 @@ class App extends React.Component {
   }
 
   runMemory = () => {
-    console.log("loading");
-    this.setState({ tasks: JSON.parse(localStorage.getItem("tasks")) })
+    if (localStorage.length !== 0) {
+      this.setState({ tasks: JSON.parse(localStorage.getItem("tasks")) })
+    }
   }
 
   componentDidMount() {
