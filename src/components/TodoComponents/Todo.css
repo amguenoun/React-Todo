@@ -1,4 +1,15 @@
+.container{
+    margin:0 auto;
+    width:80%;
+    text-align:center;
+    background: wheat;
+}
+
 .completed {
     text-decoration: line-through;
     color:red;
+}
+
+form{
+    padding:2% 0%;
 }
