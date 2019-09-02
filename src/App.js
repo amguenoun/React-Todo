@@ -46,6 +46,18 @@ class App extends React.Component {
     })
   }
 
+  runMemory = () => {
+    console.log("loading");
+    this.setState({ tasks: JSON.parse(localStorage.getItem("tasks")) })
+  }
+
+  componentDidMount() {
+    this.runMemory();
+  }
+
+  componentDidUpdate() {
+    window.localStorage.setItem("tasks", JSON.stringify(this.state.tasks));
+  }
 
   render() {
     return (
